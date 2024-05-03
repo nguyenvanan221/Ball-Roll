@@ -95,6 +95,7 @@ public class PlayerBehaviour : MonoBehaviour
              }           
         #endif
 
+        rollSpeed += Time.deltaTime / 60;
         rb.AddForce(horizontalSpeed, 0 , rollSpeed);
     }
 
