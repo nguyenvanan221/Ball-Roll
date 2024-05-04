@@ -14,10 +14,10 @@ public class PauseScreen : MonoBehaviour
         paused = false;
 
         
-        if (!Interstitial.Instance.showAds)
-        {
-            SetPauseMenu(false);
-        }
+        //if (!Interstitial.Instance.showAds)
+        //{
+        //    SetPauseMenu(false);
+        //}
     }
 
     public void Restart()

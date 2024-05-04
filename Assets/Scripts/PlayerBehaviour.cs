@@ -141,57 +141,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Touch touch = Input.touches[0];
 
-            SwipeTeleport(touch);
             ScalePlayer();
-            TouchObject(touch);
+            TouchObject(touch.position);
         }
 #endif
     }
-
-    //teleport player if swipe to the left or right
-    private void SwipeTeleport(Touch touch)
-    {
-        if (touch.phase == TouchPhase.Began)
-        {
-            touchStart = touch.position;
-        }
-        else if (touch.phase == TouchPhase.Ended)
-        {
-            Vector2 touchEnd = touch.position;
-
-            //diffirence between beginning and end
-            float x = touchEnd.x - touchStart.x;
-
-            if (Mathf.Abs(x) < minSwipeDistancePixels)
-            {
-                return;
-            }
-
-            Vector3 moveDirection;
-
-            if (x < 0)
-            {
-                moveDirection = Vector3.left;
-            }
-            else
-            {
-                moveDirection = Vector3.right;
-            }
-
-            RaycastHit hit;
-
-            if (!rb.SweepTest(moveDirection, out hit, swipeMove))
-            {
-                /* Move the player */
-                var movement = moveDirection * swipeMove;
-                var newPos = rb.position + movement;
-
-                rb.MovePosition(newPos);
-            }
-        }
-
-    }
-
 
     private void ScalePlayer()
     {
