@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class Interstitial : Singleton<Interstitial>, IUnityAdsLoadListener, IUnityAdsShowListener
+public class RewardedAd : Singleton<RewardedAd>, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] string _androidAdUnitId = "Interstitial_Android";
-    [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
+    [SerializeField] string _androidAdUnitId = "Rewarded_Android";
+    [SerializeField] string _iOsAdUnitId = "Rewarded_iOS";
     string _adUnitId;
     public bool showAds = true;
 
@@ -21,6 +21,7 @@ public class Interstitial : Singleton<Interstitial>, IUnityAdsLoadListener, IUni
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
         Debug.Log("Loading Ad: " + _adUnitId);
+       
         Advertisement.Load(_adUnitId, this);
     }
 
@@ -52,12 +53,14 @@ public class Interstitial : Singleton<Interstitial>, IUnityAdsLoadListener, IUni
 
     public void OnUnityAdsShowStart(string _adUnitId)
     {
+        Debug.Log("Ad Start");
         PauseScreen.paused = true;
         Time.timeScale = 0f;
     }
     public void OnUnityAdsShowClick(string _adUnitId) { }
     public void OnUnityAdsShowComplete(string _adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
+        Debug.Log("Ad Complete");
         PauseScreen.paused = false;
         Time.timeScale = 1f;
     }

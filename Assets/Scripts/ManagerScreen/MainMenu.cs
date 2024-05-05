@@ -1,15 +1,16 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public void LoadLevel(string levelName)
     {
-        if (Interstitial.Instance.showAds)
-        {
-            Interstitial.Instance.ShowAd();
-        }
-
         SceneManager.LoadScene(levelName);
+        if (AdsInit.showAd)
+        {
+            RewardedAd.Instance.ShowAd();
+        }
     }
 }
