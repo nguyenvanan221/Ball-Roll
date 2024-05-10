@@ -13,23 +13,39 @@ public class PauseScreen : MonoBehaviour
     {
         paused = false;
 
-        
-        //if (!Interstitial.Instance.showAds)
-        //{
-        //    SetPauseMenu(false);
-        //}
     }
 
     public void Restart()
     {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Time.timeScale = 1.0f;
+        //RewardedAd.Instance.LoadAd();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(WaitRestart());
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        //Time.timeScale = 1.0f;
+        //RewardedAd.Instance.LoadAd();
+        //SceneManager.LoadScene("MainMenu");
+        StartCoroutine(WaitMainMenu());
 
+    }
+
+    IEnumerator WaitMainMenu()
+    {
+        Time.timeScale = 1.0f;
+        RewardedAd.Instance.LoadAd();
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator WaitRestart()
+    {
+        Time.timeScale = 1.0f;
+        RewardedAd.Instance.LoadAd();
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void SetPauseMenu(bool isPaused)

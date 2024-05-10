@@ -6,7 +6,7 @@ public class RewardedAd : Singleton<RewardedAd>, IUnityAdsLoadListener, IUnityAd
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOsAdUnitId = "Rewarded_iOS";
     string _adUnitId;
-    public bool showAds = true;
+    public bool showAds = false;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class RewardedAd : Singleton<RewardedAd>, IUnityAdsLoadListener, IUnityAd
     // Implement Load Listener and Show Listener interface methods: 
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        // Optionally execute code if the Ad Unit successfully loads content.
+        ShowAd();
     }
 
     public void OnUnityAdsFailedToLoad(string _adUnitId, UnityAdsLoadError error, string message)
@@ -54,14 +54,11 @@ public class RewardedAd : Singleton<RewardedAd>, IUnityAdsLoadListener, IUnityAd
     public void OnUnityAdsShowStart(string _adUnitId)
     {
         Debug.Log("Ad Start");
-        PauseScreen.paused = true;
-        Time.timeScale = 0f;
+        showAds = true;
     }
     public void OnUnityAdsShowClick(string _adUnitId) { }
     public void OnUnityAdsShowComplete(string _adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         Debug.Log("Ad Complete");
-        PauseScreen.paused = false;
-        Time.timeScale = 1f;
     }
 }

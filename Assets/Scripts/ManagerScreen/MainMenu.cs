@@ -7,10 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadLevel(string levelName)
     {
+        
         SceneManager.LoadScene(levelName);
-        if (AdsInit.showAd)
-        {
-            RewardedAd.Instance.ShowAd();
-        }
     }
 }
