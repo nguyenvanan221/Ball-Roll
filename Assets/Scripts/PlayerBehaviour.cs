@@ -130,8 +130,6 @@ public class PlayerBehaviour : MonoBehaviour
 
 #if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
 
-        // Rest of the Update function...
-
         /* If the mouse is tapped */
         if (Input.GetMouseButtonDown(0))
         {

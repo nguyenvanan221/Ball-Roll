@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 858310118636819205, guid: cbe4b42470421f9419f9590f80d86422, type: 3}
   obstacle: {fileID: 5820515808155633943, guid: fe4ae4042f914c34cb6b749a3cbcf434, type: 3}
-  startPoint: {x: 0, y: 0, z: -5}
+  startPoint: {x: 0, y: 0, z: -5.5}
   initSpawnNum: 10
   initNoObstacles: 4
   endScreen: {fileID: 756144232}

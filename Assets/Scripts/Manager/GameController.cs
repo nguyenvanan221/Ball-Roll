@@ -10,7 +10,7 @@ public class GameController : Singleton<GameController>
 
     public Transform obstacle;
 
-    public Vector3 startPoint = new Vector3(0, 0, -5);
+    public Vector3 startPoint = new Vector3(0, 0, -5.5f);
 
     // number tile create
     [Range (1,15)]
