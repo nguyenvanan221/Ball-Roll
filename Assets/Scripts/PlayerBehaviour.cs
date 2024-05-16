@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float dodgeSpeed = 5.0f;
 
-    public float rollSpeed = 5.0f;
+    public float rollSpeed = 6.0f;
 
     public enum MobileHorizMovement
     {
@@ -55,6 +55,9 @@ public class PlayerBehaviour : MonoBehaviour
         } 
     }
 
+    public Score bestScore;
+    public Score lastScore;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -95,7 +98,7 @@ public class PlayerBehaviour : MonoBehaviour
              }           
         #endif
 
-        rollSpeed += Time.deltaTime / 60;
+        rollSpeed += Time.deltaTime / 30;
         rb.AddForce(horizontalSpeed, 0 , rollSpeed);
     }
 

@@ -10,19 +10,24 @@ public class ObstaclesBehaviour : MonoBehaviour
 
     public GameObject explosion;
 
-    private GameObject player;
+    private PlayerBehaviour player;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<PlayerBehaviour>())
         {
-            player = collision.gameObject;
-            player.SetActive(false);
+            player = collision.gameObject.GetComponent<PlayerBehaviour>();
+            player.lastScore.value = player.Score;
+            if (player.Score > player.bestScore.value)
+            {
+                player.bestScore.value = player.Score;
+            }
+            collision.gameObject.SetActive(false);
 
-            Invoke("ResetGame", waitTime);
+            Invoke("EndGame", waitTime);
         }
     }
 
-    void ResetGame()
+    void EndGame()
     {
         GameController.Instance.EndGame();
     }

@@ -15,19 +15,8 @@ public class PauseScreen : MonoBehaviour
 
     }
 
-    public void Restart()
-    {
-        //Time.timeScale = 1.0f;
-        //RewardedAd.Instance.LoadAd();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        StartCoroutine(WaitRestart());
-    }
-
     public void MainMenu()
     {
-        //Time.timeScale = 1.0f;
-        //RewardedAd.Instance.LoadAd();
-        //SceneManager.LoadScene("MainMenu");
         StartCoroutine(WaitMainMenu());
 
     }
@@ -40,11 +29,8 @@ public class PauseScreen : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    IEnumerator WaitRestart()
+    public void Restart()
     {
-        Time.timeScale = 1.0f;
-        RewardedAd.Instance.LoadAd();
-        yield return new WaitForSeconds(2.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
